@@ -1,4 +1,4 @@
-name: Terminus
+name: Terminus - Update Homebrew
 on:
   release:
     types: [published]
