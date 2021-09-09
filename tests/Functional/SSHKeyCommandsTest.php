@@ -44,7 +44,7 @@ class SSHKeyCommandsTest extends TestCase
         echo "New ID list: " . print_r($new_id_list) . "\n";
         $new_key = array_diff($new_id_list, $original_id_list);
         echo "New key: " . print_r($new_key, true) . "\n";
-        if(is_array($new_key)) {
+        if (is_array($new_key)) {
             $new_key = array_pop($new_key);
         }
 
