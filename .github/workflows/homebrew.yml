@@ -1,7 +1,7 @@
 name: Terminus - Update Homebrew
 on:
   release:
-    types: [ published ]
+    types: [ created, published ]
 jobs:
   package_macos:
     runs-on: macos-latest
