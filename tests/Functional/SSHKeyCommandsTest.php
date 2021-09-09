@@ -32,14 +32,18 @@ class SSHKeyCommandsTest extends TestCase
         $ssh_key_list = $this->terminusJsonResponse('ssh-key:list');
         $original_id_list = array_keys($ssh_key_list);
         $key_count = count($ssh_key_list);
+        echo "Original key count: $key_count\n";
 
         // Add new key
         $this->terminus("ssh-key:add $dummy_key_file");
         $ssh_key_list_new = $this->terminusJsonResponse('ssh-key:list');
+        echo "new SSH key list: " . print_r($ssh_key_list_new, true) . "\n";
 
         $this->assertGreaterThan($key_count, count($ssh_key_list_new));
         $new_id_list = array_keys($ssh_key_list_new);
+        echo "New ID list: " . print_r($new_id_list) . "\n";
         $new_key = array_diff($new_id_list, $original_id_list);
+        echo "New key: " . print_r($new_key, true) . "\n";
         $new_key = $new_key[0];
 
         // Remove
