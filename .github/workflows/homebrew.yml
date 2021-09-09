@@ -1,16 +1,12 @@
 name: Terminus
 on:
-  push:
-  pull_request:
-  repository_dispatch:
-  schedule:
-    - cron: '0 0 * * *'
+  release:
+    types: [published]
 jobs:
   package_macos:
     runs-on: macos-latest
     name: Package a Homebrew release
     if: ${{ startsWith(github.ref, 'refs/tags/')  && github.repository == 'pantheon-systems/pantheon-cli' }}
-    needs: [ 'release' ]
     steps:
       - name: Bump Homebrew formula
         uses: dawidd6/action-homebrew-bump-formula@v3
